@@ -1,0 +1,11 @@
+# Cloudflare Pages 보안 헤더
+# 이 파일은 빌드 없이 그대로 적용됩니다. (출력 디렉터리에 위치해야 함)
+# 참고: 실제 접근 차단(인증)은 Cloudflare Access가 담당합니다. 이 헤더는 보조 방어선입니다.
+
+/*
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: geolocation=(), microphone=(), camera=()
+  Cross-Origin-Opener-Policy: same-origin
+  Content-Security-Policy: default-src 'self'; img-src 'self' data: https:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; script-src 'self'; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'

@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>C&amp;Y Engineering · 인트라넷</title>
+  <meta name="description" content="C&Y Engineering 사내 인트라넷 — 공지, 바로가기, 구성원, 시스템 현황" />
+
+  <!-- 폰트: 화면 깜빡임을 줄이기 위해 preconnect 사용 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- 헤더: 회사명 + 오늘 날짜 + 로그인 사용자(Cloudflare Access가 주입) -->
+  <header class="topbar" role="banner">
+    <div class="topbar__inner">
+      <div class="brand">
+        <span class="brand__mark" aria-hidden="true">C&amp;Y</span>
+        <span class="brand__text">
+          <strong>C&amp;Y Engineering</strong>
+          <span class="brand__sub">사내 인트라넷 · Intranet</span>
+        </span>
+      </div>
+      <div class="topbar__meta">
+        <span id="today" class="topbar__date" aria-live="polite"></span>
+        <span id="user-chip" class="user-chip" title="현재 로그인 사용자"></span>
+      </div>
+    </div>
+  </header>
+
+  <main class="layout" role="main">
+    <!-- 좌측 메인: 공지사항 -->
+    <section class="panel panel--wide" aria-labelledby="announce-title">
+      <div class="panel__head">
+        <h2 id="announce-title" class="panel__title">공지사항</h2>
+        <span class="panel__label">Announcements</span>
+      </div>
+      <ul id="announcements" class="feed" aria-busy="true"></ul>
+    </section>
+
+    <!-- 우측 사이드: 바로가기 -->
+    <section class="panel" aria-labelledby="links-title">
+      <div class="panel__head">
+        <h2 id="links-title" class="panel__title">바로가기</h2>
+        <span class="panel__label">Quick Links</span>
+      </div>
+      <nav id="quick-links" class="links" aria-label="사내 시스템 바로가기"></nav>
+    </section>
+
+    <!-- 구성원 디렉터리 -->
+    <section class="panel" aria-labelledby="dir-title">
+      <div class="panel__head">
+        <h2 id="dir-title" class="panel__title">구성원</h2>
+        <span class="panel__label">Directory</span>
+      </div>
+      <ul id="directory" class="directory"></ul>
+    </section>
+
+    <!-- 시스템 현황 -->
+    <section class="panel" aria-labelledby="sys-title">
+      <div class="panel__head">
+        <h2 id="sys-title" class="panel__title">시스템 현황</h2>
+        <span class="panel__label">Systems</span>
+      </div>
+      <ul id="systems" class="systems"></ul>
+    </section>
+  </main>
+
+  <footer class="footer" role="contentinfo">
+    <span id="footer-note"></span>
+  </footer>
+
+  <!-- data.js = 내용(공지/링크/구성원) — 비개발자도 여기만 수정하면 됩니다 -->
+  <script src="data.js"></script>
+  <!-- app.js = 렌더링 로직 — 보통 수정할 필요 없습니다 -->
+  <script src="app.js"></script>
+</body>
+</html>
