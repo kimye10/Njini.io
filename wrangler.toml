@@ -1,6 +1,0 @@
-mkdir public
-git mv index.html styles.css app.js data.js _headers public/
-# 받은 wrangler.toml 을 repo 루트에 추가한 뒤
-git add wrangler.toml public
-git commit -m "Workers 정적 자산 구조로 변경"
-git push
